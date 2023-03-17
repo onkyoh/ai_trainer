@@ -1,0 +1,494 @@
+$gray: #31393D;
+$dark-gray: #252a2e;
+$background-gray: #17191a;
+$mint: #60EFD5;
+$yellow: #F0DB2F;
+
+@mixin flexCenter() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    caret-color: #60EFD5;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+input {
+    all: unset;
+    background-color: #252a2e;
+}
+
+main {
+    position: fixed;
+    background-color: $background-gray;
+    display: grid;
+    padding: 2px;
+    gap: 2px;
+    grid-template-areas:
+    "plans viewer table"
+    "chart chart chart";
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 250px auto 300px;
+    grid-template-rows: 1fr 400px;
+}
+
+#chart {
+    grid-area: chart;
+    width: 100%;
+    height: 100%;
+    background-color: $gray;
+    color: white;
+    svg {
+        padding-top: 3rem;
+    }
+}
+
+#table {
+    position: relative;
+    grid-area: table;
+    width: 300px;
+    background-color: $background-gray;
+    height: fit-content;
+    max-height: 100%;
+    overflow-y: auto;
+    color: white;
+    table {
+        width: 300px;
+        text-align: center;
+        text-overflow: ellipsis;
+        border-collapse: separate; 
+        width: 100%;
+        margin-top: -2px;
+        border-spacing: 0 2px;
+        thead {
+            text-transform: uppercase;
+        }
+        tr {
+            width: 300px;
+            td {
+                height: 2rem;
+                background-color: $gray;
+                &:nth-of-type(1) {
+                    width: 40%;
+                }
+                &:nth-of-type(2) {
+                   width: 40%;
+                   border-right: 2px solid $background-gray;
+                   border-left: 2px solid $background-gray;
+                }
+                &:nth-of-type(3) {
+                    width: 20%;
+                    background-color: $background-gray;
+                    >div {
+                        @include flexCenter();
+                        gap: 2px;
+                        height: 100%;
+                        button {
+                            height: 100%;
+                            flex: auto;
+                            &:first-of-type {
+                                background-color: $mint;
+                                color: $background-gray;
+                            }
+                            &:last-of-type {
+                                background-color: $dark-gray;
+                                color: white;
+                            }
+
+                            &:nth-of-type(2) {
+                                background-color: $yellow;
+                                color: $background-gray;
+                            }
+                        
+                        }
+                 
+                    }
+                }
+                input, p {
+                  width: 100%;
+                  @include flexCenter();
+                  height: 100%;  
+                }
+                input {
+                    &::-webkit-calendar-picker-indicator {
+                        filter: invert(1);
+                    }
+                    background-color: $dark-gray;
+                }
+            }
+        }
+    }
+}
+
+@keyframes pop-in {
+    from {
+        transform: scale(0.7);
+    } to {
+        transform: translate(1);
+    }
+}
+
+
+#plans-list {
+    grid-area: plans;
+    position: relative;
+    @include flexCenter();
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 250px;
+    height: fit-content;
+    max-height: 100%;
+    overflow-y: auto;
+    gap: 2px;
+    button {
+        animation: pop-in 0.2s ease-in-out 1
+    }
+    #list-header {
+        width: 100%;
+        height: 3rem;
+        @include flexCenter();
+        gap: 2px;
+        background-color: $background-gray;
+        color: white;
+        button {
+            height: 100%;
+            width: 100%;
+            @include flexCenter();
+            background-color: $dark-gray
+        }
+    }
+    ul {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        list-style: none;
+        li {
+            width: 100%;
+            height: 50px;
+            cursor: pointer;
+            color: white;
+            margin-bottom: 2px;
+            gap: 2px;
+            @include flexCenter();
+            justify-content: flex-start;
+            p {
+                height: 100%;
+                padding: 0.5rem;
+                width: 100%;
+                @include flexCenter();
+                justify-content: flex-start;
+                overflow: hidden;
+            }
+            >button {
+                width: 50px;
+                background-color: $yellow;
+                color: $background-gray;
+                @include flexCenter();
+                height: 100%;
+                border-left: 2px solid $background-gray;
+            }
+            >div {
+                @include flexCenter();
+                background-color: $background-gray;
+                width: 120px;
+                gap: 2px;
+                height: 100%;
+                border-left: 2px solid $background-gray;
+                button {
+                    width: 50%;
+                    background-color: $yellow;
+                    color: $background-gray;
+                    height: 100%;
+                    @include flexCenter();
+                    &:last-of-type {
+                        background-color: $mint;
+                    }
+                }
+            }
+
+        }
+    }
+}
+   
+#view-plan {
+    position: relative;
+    grid-area: viewer;
+    background-color: $gray;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    color: white;
+    form {
+        @include flexCenter();
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        position: relative;
+        button {
+            background-color: $dark-gray;
+            padding: 0.5rem;
+            box-shadow: 0px 0px 4px black;
+            text-transform: uppercase;
+        }
+        .messages {
+            @include flexCenter();
+            flex-direction: column;
+            width: 100%;
+            gap: 1rem;
+        }
+        p {
+            background-color: $mint;
+            color: $background-gray;
+            align-self: flex-start;
+            max-width: 60%;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            box-shadow: 0px 0px 4px black;
+        }
+        .response {
+            align-self: flex-end;
+            background-color: $dark-gray;
+            color: white;
+            input {
+                padding-left: 0.5rem;
+            }
+            input, select {
+                background-color: $dark-gray;
+                border: 1px solid $mint;
+                border-radius: 0.25rem;
+                color: white;
+                option {
+                    background-color: $dark-gray;
+                }
+            }
+        }
+    }
+    #workout-list {
+        padding: 1rem;
+        height: 100%;
+        width: 100%;
+        label {
+            font-weight: bold;
+            color: transparent;
+            text-align: center;
+            background-image: linear-gradient(45deg, $mint, $yellow);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+        ul {
+            list-style-type: none;
+            list-style-position: inside;
+            margin-bottom: 1rem;
+            background-color: $gray;
+            li {
+                margin-left: 1rem;
+                &:first-of-type {
+                    margin-top: 1rem;
+                }
+                span {
+                    &:last-of-type {
+                        color: $mint;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes toast {
+    0% {
+        transform: translate(-50%, calc(-100% - 20px));
+    }
+    10% {
+        transform: translate(-50%);
+    }
+    90% {
+        transform: translate(-50%);
+    }
+    100% {
+        transform: translate(-50%, calc(-100% - 20px));
+    }
+}
+
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    height: fit-content;
+    min-height: 70px;
+    max-width: 200px;
+    @include flexCenter();
+    animation: toast 3s ease-in-out;
+    background-color: $dark-gray;
+    box-shadow: 0px 0px 8px black;
+    border-radius: 0.25rem;
+    padding: 0 1rem;
+    color: white;
+    gap: 1rem;
+    span {
+     &:first-of-type {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: $dark-gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: $background-gray;
+     }
+     &:last-of-type {
+        height: 100%;
+        @include flexCenter();
+        text-align: center;
+         &::first-letter {
+             text-transform: capitalize;
+         }
+     }
+    }
+}
+
+#login {
+    height: 100vh;
+    width: 100%;
+    @include flexCenter();
+    flex-direction: column;
+    background-color: $background-gray;
+    color: white;
+    background: linear-gradient(45deg, $background-gray, $dark-gray);
+    form {
+        width: 300px;
+        @include flexCenter();
+        flex-direction: column;
+        padding: 1rem 0.25rem;
+        gap: 1rem;
+
+        h2, span {
+            color: transparent;
+            text-align: center;
+            background-image: linear-gradient(45deg, $mint, $yellow);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+        span {
+            cursor: pointer;
+        }
+        p {
+            text-transform: capitalize;
+        }
+        input {
+            width: 80%;
+            background-color: $dark-gray;
+            padding: 0.5rem;
+            border: 2px solid $background-gray;
+            &:focus {
+                outline: 1px solid $mint;
+            }
+        }
+        button {
+            width: 30%;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            background-color: $dark-gray;
+            border: 2px solid $background-gray;
+        }
+    }
+}
+
+#logout {
+    height: 3rem;
+    width: 100%;
+    color: white;
+    background-color: rgb(241, 69, 69);
+    text-transform: uppercase;
+    font-weight: 500;
+    > button {
+        height: 100%;
+        width: 100%;
+        @include flexCenter();
+    }
+    div {
+        @include flexCenter();
+        height: 100%;
+        width: 100%;
+        gap: 2px;
+        background-color: $background-gray;
+        button {
+            flex: 1;
+            @include flexCenter();
+            color: $background-gray;
+            background-color: rgb(241, 69, 69);
+            color: white;
+            height: 100%;
+        }
+    }
+}
+
+.spinner {
+    position: absolute;
+    @include flexCenter();
+    width: 100%;
+    height: 100%;
+    background-color: hsla(200, 11%, 22%, 0.7);
+    > div {
+        position: relative;
+        display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 5px solid $mint;
+        border-bottom-color: transparent;
+        animation: spin 1.5s linear infinite;
+    }
+}
+
+@keyframes spin {
+    0% { 
+        transform: rotate(0deg) 
+    } 100% { 
+        transform: rotate(360deg) 
+    }
+};
+
+@media only screen and (max-width: 900px) {
+   main {
+    position: relative;
+    background-color: $background-gray;
+    @include flexCenter();
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    height: fit-content;
+    overflow-y: auto;
+   }
+   #table {
+    margin-top: 2px;
+    width: 100%;
+    @include flexCenter();
+    align-content: flex-start;
+   }
+   #view-plan {
+    width: 100%;
+    height: 600px;
+   }
+   #plans-list {
+    width: 100%;
+    height: fit-content;
+    max-height: 400px;
+    overflow-y: auto;
+   }
+  }

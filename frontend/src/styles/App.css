@@ -1,0 +1,517 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  caret-color: #60EFD5;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+input {
+  all: unset;
+  background-color: #252a2e;
+}
+
+main {
+  position: fixed;
+  background-color: #17191a;
+  display: grid;
+  padding: 2px;
+  gap: 2px;
+  grid-template-areas: "plans viewer table" "chart chart chart";
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 250px auto 300px;
+  grid-template-rows: 1fr 400px;
+}
+
+#chart {
+  grid-area: chart;
+  width: 100%;
+  height: 100%;
+  background-color: #31393D;
+  color: white;
+}
+#chart svg {
+  padding-top: 3rem;
+}
+
+#table {
+  position: relative;
+  grid-area: table;
+  width: 300px;
+  background-color: #17191a;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-height: 100%;
+  overflow-y: auto;
+  color: white;
+}
+#table table {
+  width: 300px;
+  text-align: center;
+  text-overflow: ellipsis;
+  border-collapse: separate;
+  width: 100%;
+  margin-top: -2px;
+  border-spacing: 0 2px;
+}
+#table table thead {
+  text-transform: uppercase;
+}
+#table table tr {
+  width: 300px;
+}
+#table table tr td {
+  height: 2rem;
+  background-color: #31393D;
+}
+#table table tr td:nth-of-type(1) {
+  width: 40%;
+}
+#table table tr td:nth-of-type(2) {
+  width: 40%;
+  border-right: 2px solid #17191a;
+  border-left: 2px solid #17191a;
+}
+#table table tr td:nth-of-type(3) {
+  width: 20%;
+  background-color: #17191a;
+}
+#table table tr td:nth-of-type(3) > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  height: 100%;
+}
+#table table tr td:nth-of-type(3) > div button {
+  height: 100%;
+  flex: auto;
+}
+#table table tr td:nth-of-type(3) > div button:first-of-type {
+  background-color: #60EFD5;
+  color: #17191a;
+}
+#table table tr td:nth-of-type(3) > div button:last-of-type {
+  background-color: #252a2e;
+  color: white;
+}
+#table table tr td:nth-of-type(3) > div button:nth-of-type(2) {
+  background-color: #F0DB2F;
+  color: #17191a;
+}
+#table table tr td input, #table table tr td p {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+#table table tr td input {
+  background-color: #252a2e;
+}
+#table table tr td input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.7);
+  }
+  to {
+    transform: translate(1);
+  }
+}
+#plans-list {
+  grid-area: plans;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 250px;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-height: 100%;
+  overflow-y: auto;
+  gap: 2px;
+}
+#plans-list button {
+  animation: pop-in 0.2s ease-in-out 1;
+}
+#plans-list #list-header {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  background-color: #17191a;
+  color: white;
+}
+#plans-list #list-header button {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #252a2e;
+}
+#plans-list ul {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  list-style: none;
+}
+#plans-list ul li {
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  color: white;
+  margin-bottom: 2px;
+  gap: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+}
+#plans-list ul li p {
+  height: 100%;
+  padding: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+#plans-list ul li > button {
+  width: 50px;
+  background-color: #F0DB2F;
+  color: #17191a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-left: 2px solid #17191a;
+}
+#plans-list ul li > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #17191a;
+  width: 120px;
+  gap: 2px;
+  height: 100%;
+  border-left: 2px solid #17191a;
+}
+#plans-list ul li > div button {
+  width: 50%;
+  background-color: #F0DB2F;
+  color: #17191a;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#plans-list ul li > div button:last-of-type {
+  background-color: #60EFD5;
+}
+
+#view-plan {
+  position: relative;
+  grid-area: viewer;
+  background-color: #31393D;
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  color: white;
+}
+#view-plan form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  position: relative;
+}
+#view-plan form button {
+  background-color: #252a2e;
+  padding: 0.5rem;
+  box-shadow: 0px 0px 4px black;
+  text-transform: uppercase;
+}
+#view-plan form .messages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+#view-plan form p {
+  background-color: #60EFD5;
+  color: #17191a;
+  align-self: flex-start;
+  max-width: 60%;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0px 4px black;
+}
+#view-plan form .response {
+  align-self: flex-end;
+  background-color: #252a2e;
+  color: white;
+}
+#view-plan form .response input {
+  padding-left: 0.5rem;
+}
+#view-plan form .response input, #view-plan form .response select {
+  background-color: #252a2e;
+  border: 1px solid #60EFD5;
+  border-radius: 0.25rem;
+  color: white;
+}
+#view-plan form .response input option, #view-plan form .response select option {
+  background-color: #252a2e;
+}
+#view-plan #workout-list {
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+}
+#view-plan #workout-list label {
+  font-weight: bold;
+  color: transparent;
+  text-align: center;
+  background-image: linear-gradient(45deg, #60EFD5, #F0DB2F);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+#view-plan #workout-list ul {
+  list-style-type: none;
+  list-style-position: inside;
+  margin-bottom: 1rem;
+  background-color: #31393D;
+}
+#view-plan #workout-list ul li {
+  margin-left: 1rem;
+}
+#view-plan #workout-list ul li:first-of-type {
+  margin-top: 1rem;
+}
+#view-plan #workout-list ul li span:last-of-type {
+  color: #60EFD5;
+  font-weight: bold;
+}
+
+@keyframes toast {
+  0% {
+    transform: translate(-50%, calc(-100% - 20px));
+  }
+  10% {
+    transform: translate(-50%);
+  }
+  90% {
+    transform: translate(-50%);
+  }
+  100% {
+    transform: translate(-50%, calc(-100% - 20px));
+  }
+}
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 70px;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: toast 3s ease-in-out;
+  background-color: #252a2e;
+  box-shadow: 0px 0px 8px black;
+  border-radius: 0.25rem;
+  padding: 0 1rem;
+  color: white;
+  gap: 1rem;
+}
+.toast span:first-of-type {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #252a2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #17191a;
+}
+.toast span:last-of-type {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.toast span:last-of-type::first-letter {
+  text-transform: capitalize;
+}
+
+#login {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #17191a;
+  color: white;
+  background: linear-gradient(45deg, #17191a, #252a2e);
+}
+#login form {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 0.25rem;
+  gap: 1rem;
+}
+#login form h2, #login form span {
+  color: transparent;
+  text-align: center;
+  background-image: linear-gradient(45deg, #60EFD5, #F0DB2F);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+#login form span {
+  cursor: pointer;
+}
+#login form p {
+  text-transform: capitalize;
+}
+#login form input {
+  width: 80%;
+  background-color: #252a2e;
+  padding: 0.5rem;
+  border: 2px solid #17191a;
+}
+#login form input:focus {
+  outline: 1px solid #60EFD5;
+}
+#login form button {
+  width: 30%;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  background-color: #252a2e;
+  border: 2px solid #17191a;
+}
+
+#logout {
+  height: 3rem;
+  width: 100%;
+  color: white;
+  background-color: rgb(241, 69, 69);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+#logout > button {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#logout div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 2px;
+  background-color: #17191a;
+}
+#logout div button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #17191a;
+  background-color: rgb(241, 69, 69);
+  color: white;
+  height: 100%;
+}
+
+.spinner {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(200, 11%, 22%, 0.7);
+}
+.spinner > div {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid #60EFD5;
+  border-bottom-color: transparent;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media only screen and (max-width: 900px) {
+  main {
+    position: relative;
+    background-color: #17191a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    height: -moz-fit-content;
+    height: fit-content;
+    overflow-y: auto;
+  }
+  #table {
+    margin-top: 2px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+  }
+  #view-plan {
+    width: 100%;
+    height: 600px;
+  }
+  #plans-list {
+    width: 100%;
+    height: -moz-fit-content;
+    height: fit-content;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+}/*# sourceMappingURL=App.css.map */
