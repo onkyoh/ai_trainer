@@ -46,6 +46,7 @@ const PlansList = ({
           toggleDeleteMode={toggleDeleteMode}
           deletingId={deletingId}
           sendDelete={sendDelete}
+          key={plan._id}
           />
         ))}
       </ul>

@@ -12,8 +12,10 @@ const usePlans = () => {
       const res = await getPlans()
       if (res.success) {
         setPlans(res.data)
-        const idx = res.data.findIndex((plan: IPlan) => plan._id === currentPlan?._id)
-        setCurrentPlan(res.data[idx])
+        if (currentPlan) {
+          const idx = res.data.findIndex((plan: IPlan) => plan._id === currentPlan?._id)
+          setCurrentPlan(res.data[idx])
+        }
       }
     }
 

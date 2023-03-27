@@ -36,7 +36,14 @@ const createPlan = async(req,res) => {
         prompt: prompt,
         temperature: 0,
         max_tokens: 2048
-      });
+    });
+
+    if (!completion) {
+        return res.status(500).send({
+            success: false,
+            message: 'Error creating plan'
+        })
+    }
 
     let preConfig = completion.data.choices[0].text;
     const idx1 = preConfig.indexOf("[");
@@ -53,13 +60,13 @@ const createPlan = async(req,res) => {
     })
 
     if (newPlan) {
-        res.status(201).send({
+        return res.status(201).send({
             success: true,
             message: 'Plan created',
             data: newPlan
         })
     } else {
-        res.status(500).send({
+        return res.status(500).send({
             success: false,
             message: 'Error creating plan'
         })
@@ -139,7 +146,7 @@ const addPoint = async(req,res) => {
         })
     }
 
-    res.status(200).send({
+    return res.status(200).send({
         success: true,
         message: 'Point added',
     })

@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs') 
 const User = require('../models/userModel')
-const { generateToken } = require('../utils/generateToken')
+const generateToken = require('../utils/generateToken')
 
 const registerUser = async(req, res) => {
     const {username, password} = req.body
@@ -30,7 +30,7 @@ const registerUser = async(req, res) => {
     })
 
     if (user) {
-        res.status(201).send({
+        return res.status(201).send({
             success: true,
             message: 'success',
             data: {
@@ -40,7 +40,7 @@ const registerUser = async(req, res) => {
             }
         })
     } else {
-        res.status(400).send({
+        return res.status(400).send({
             success: false,
             message: 'invalid user data'
         })
@@ -62,7 +62,7 @@ const loginUser = async(req, res) => {
 
     //check passwords
     if (user && (await bcrypt.compare(password, user.password))) {
-        res.send({
+        return res.status(200).send({
             success: true,
             message: 'success',
             data: {
@@ -72,7 +72,7 @@ const loginUser = async(req, res) => {
             }
         })
     } else {
-        res.status(400).send({
+        return res.status(401).send({
             success: false,
             message: 'invalid credentials'
         })
@@ -89,7 +89,7 @@ const getUser = async(req, res) => {
         })
     }
     
-    res.status(200).send({
+    return res.status(200).send({
         success: true,
         message: 'success',
         data: {

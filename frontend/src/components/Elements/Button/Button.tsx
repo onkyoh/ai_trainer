@@ -4,6 +4,7 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
     children: React.ReactNode,
     isDisabled?: boolean,
     className?: string,
+    label?: string
 }
 
 const Button = ({
@@ -11,10 +12,11 @@ const Button = ({
     className = '',
     isDisabled = false,
     children,
-    onClick
+    onClick,
+    label
 }: IButtonProps) => {
   return (
-    <button type={type} disabled={isDisabled} className={className} onClick={onClick}>
+    <button type={type} disabled={isDisabled} className={className} onClick={onClick} aria-label={label}>
         {children}
     </button>
   )

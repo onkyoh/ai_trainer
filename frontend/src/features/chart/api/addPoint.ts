@@ -12,7 +12,7 @@ export const addPoint = async (
 ) => {
 
     try {
-        const res = await axios.put(`${PLAN_URL}/${planId}/add`, data, authorize())
+        const res = await axios.put(`${PLAN_URL}/${planId}`, data, authorize())
         return res.data
     } catch (err: any) {
         return errorHandler(err)

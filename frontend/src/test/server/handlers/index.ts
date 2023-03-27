@@ -4,4 +4,6 @@ import {chartHandlers} from './chart'
 
 export const handlers = [
     ...authHandlers,
+    ...chartHandlers,
+    ...planHandlers
 ]

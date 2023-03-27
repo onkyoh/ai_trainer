@@ -28,8 +28,6 @@ export const authHandlers = [
                     }
                 }
             })
-
-            console.log(user)
         
             if (user) {
                 return res(ctx.status(400), ctx.json({
