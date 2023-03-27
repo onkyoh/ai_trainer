@@ -31,6 +31,3 @@ AI-Trainer is hosted on Adaptable.io for the backend and Netlify for the fronten
 
 I welcome contributions to AI-Trainer! If you have any ideas for new features or would like to report a bug, please don't hesitate to open an issue or submit a pull request.
 
-## License
-
-AI-Trainer is licensed under the [MIT License](https://github.com/onkyoh/ai_trainer/blob/master/LICENSE).
