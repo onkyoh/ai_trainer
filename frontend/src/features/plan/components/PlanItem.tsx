@@ -30,20 +30,20 @@ const PlanItem = ({
     }
 
   return (
-    <li style={itemStyle} key={id}>
+    <li style={itemStyle}>
         <p onClick={onClick}>{name}</p>
         {deletingId === id ?
             <div>
-                <Button onClick={() => sendDelete(id)}>
+                <Button onClick={() => sendDelete(id)} label='confirm-delete'>
                     <FaCheck/>
                 </Button>
-                <Button onClick={() => toggleDeleteMode('')}>
+                <Button onClick={() => toggleDeleteMode('')} label='cancel-delete'>
                     <GiCancel size={20}/>
                 </Button>
             </div>
             :
             isCurrent && 
-            <Button onClick={() => toggleDeleteMode(id)}>
+            <Button onClick={() => toggleDeleteMode(id)} label='toggle-delete'>
                 <AiFillDelete/>
             </Button>
         }

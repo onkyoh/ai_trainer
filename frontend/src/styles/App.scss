@@ -327,9 +327,7 @@ main {
     position: fixed;
     top: 20px;
     left: 50%;
-    height: fit-content;
     min-height: 70px;
-    max-width: 200px;
     @include flexCenter();
     animation: toast 3s ease-in-out;
     background-color: $dark-gray;
@@ -344,15 +342,13 @@ main {
         width: 40px;
         border-radius: 50%;
         background-color: $dark-gray;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flexCenter();
         font-weight: bold;
         color: $background-gray;
      }
      &:last-of-type {
-        height: 100%;
         @include flexCenter();
+        width: 125px;
         text-align: center;
          &::first-letter {
              text-transform: capitalize;

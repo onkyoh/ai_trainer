@@ -330,10 +330,7 @@ main {
   position: fixed;
   top: 20px;
   left: 50%;
-  height: -moz-fit-content;
-  height: fit-content;
   min-height: 70px;
-  max-width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -357,10 +354,10 @@ main {
   color: #17191a;
 }
 .toast span:last-of-type {
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 125px;
   text-align: center;
 }
 .toast span:last-of-type::first-letter {

@@ -44,9 +44,9 @@ export interface IPlan {
     _id: string,
     ownerId: string,
     name: string,
-    plan: IWorkout[],
+    plan: IWorkout[] | [],
     tracker: {
         yAxis: string,
-        points: IPoint[]
+        points: IPoint[] | []
     }
 }

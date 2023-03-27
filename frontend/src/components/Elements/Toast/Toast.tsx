@@ -6,8 +6,8 @@ interface IProps {
 }
 
 const Toast = ({
-    success = true, 
-    message= 'test message',
+    success, 
+    message,
     red = '#E92127',
     green = '#4D9456',
 }: IProps) => {
@@ -18,7 +18,7 @@ const Toast = ({
   }
 
   return (
-    <div className='toast'>
+    <div className="toast" aria-label="alert">
       <span style={toastIcon}>{success ? '✓' : '!'}</span>
       <span>{message}</span>
     </div>

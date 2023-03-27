@@ -35,6 +35,7 @@ const PlanForm = ({
               onChange={handleFormValues} 
               value={formValues.goal} 
               name='goal'
+              label='goal-input'
               />
               
             </p>
@@ -56,6 +57,7 @@ const PlanForm = ({
               onChange={handleFormValues} 
               value={formValues.days} 
               name='days'
+              label='days-input'
               />
               &nbsp; days a week
             </p>
@@ -70,7 +72,13 @@ const PlanForm = ({
 
             <p className='response'>
               I would like to measure my &nbsp;
-              <input value={formValues.yAxis} name='yAxis' placeholder='measurement/unit' onChange={handleFormValues}/>
+              <input 
+              value={formValues.yAxis} 
+              name='yAxis' 
+              placeholder='measurement/unit' 
+              onChange={handleFormValues}
+              aria-label='yAxis-input'
+              />
             </p>
           </div>}
 
@@ -80,7 +88,12 @@ const PlanForm = ({
             <p>What type of weight training, if any, would you like to use for this goal?</p>
 
             <p className='response'>
-              <Select list={EQUIPMENT_LIST} onChange={handleFormValues} value={formValues.equipment} name='equipment'/>
+              <Select 
+              list={EQUIPMENT_LIST} 
+              onChange={handleFormValues} 
+              value={formValues.equipment} 
+              name='equipment' 
+              label='equipment-input'/>
               &nbsp; would be my preference
             </p>
           </div>}
@@ -90,7 +103,7 @@ const PlanForm = ({
 
             <p className='response'>
               Yes! I would like to name it&nbsp;
-              <input value={formValues.name} name='name' onChange={handleFormValues}/>
+              <input value={formValues.name} name='name' onChange={handleFormValues} aria-label='name-input'/>
             </p>
 
             <button type='submit'>

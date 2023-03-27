@@ -8,9 +8,8 @@ const models = {
     plan: Array,
     tracker: {
       yAxis: String,
-      points: Array
+      points: Array,
     },
-    createdAt: Number,
   },
   user: {
     _id: primaryKey(String),
@@ -19,12 +18,8 @@ const models = {
   },
 };
 
-export const db = factory(models)
-
-export const loadDb = () => {
-  Object.assign(JSON.parse(window.localStorage.getItem('msw-db') || '{}'))
-}
+export let db = factory(models)
 
 export const resetDb = () => {
-  window.localStorage.clear();
-};
+  db = factory(models)
+}

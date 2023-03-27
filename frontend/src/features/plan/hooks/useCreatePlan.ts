@@ -25,7 +25,6 @@ const useCreatePlan = (selectPlan: ((plan: IPlan | null) => void)) => {
     
     const sendCreate = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        //validation
         setIsLoading(true)
         const res = await createPlan(formValues)
         context?.notify(res)

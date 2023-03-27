@@ -6,20 +6,20 @@ interface IProps {
 
 const PlanViewer = ({plan}: IProps) => {
   return (
-    <div id="workout-list">
+    <div id="workout-list" aria-label="workout-list">
       {
         plan.map((element) => (
-          <>
-            <label>{element.label}</label>
-            <ul>
+          <div key={element.label}>
+            <label key={element.label}>{element.label}</label>
+            <ul key={element.label + 'list'}>
               {element.exercises.map((workout) => (
-                <li>
+                <li key={workout.name}>
                   <span>{workout.name}: </span>
                   <span>{workout.amount}</span>
                 </li>
               ))}
             </ul>
-          </>
+          </div>
         ))}
     </div>
   )
