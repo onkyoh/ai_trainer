@@ -13,6 +13,6 @@ export const COLORS = {
     BLACK: 'black'
 }
 
-export const LOGIN_URL = 'http://localhost:5000/users'
+export const LOGIN_URL = 'https://ai-trainer.adaptable.app/users'
 
-export const PLAN_URL = 'http://localhost:5000/plans'
+export const PLAN_URL = 'https://ai-trainer.adaptable.app/plans'
