@@ -47,7 +47,7 @@ export const chartHandlers = [
       return res(ctx.status(200), ctx.json({ success: true, message: 'Point added' }));
     }),
   
-    rest.put(`${PLAN_URL}/:planId/:pointId`, async (req, res, ctx) => {
+    rest.put(`${PLAN_URL}/:planId/points/:pointId`, async (req, res, ctx) => {
             
         const { planId, pointId } = req.params;
         const point = await req.json();
@@ -90,7 +90,7 @@ export const chartHandlers = [
       return res(ctx.status(200), ctx.json({ success: true, message: 'Point updated' }));
     }),
   
-    rest.delete(`${PLAN_URL}/:planId/:pointId`, async (req, res, ctx) => {
+    rest.delete(`${PLAN_URL}/:planId/points/:pointId`, async (req, res, ctx) => {
        
         const { planId, pointId } = req.params;
   
