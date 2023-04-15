@@ -9,7 +9,7 @@ export const deletePoint = async (
 ) => {
     
     try {
-        const res = await axios.delete(`${PLAN_URL}/${planId}/${pointId}`, authorize())
+        const res = await axios.delete(`${PLAN_URL}/${planId}/points/${pointId}`, authorize())
         return res.data
     } catch (err: any) {
         return errorHandler(err)

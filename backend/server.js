@@ -14,8 +14,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/plans', require('./routes/planRoutes'))
-app.use('/users', require('./routes/userRoutes'))
+app.use('/api/plans', require('./routes/planRoutes'))
+app.use('/api/users', require('./routes/userRoutes'))
 
 const server = app.listen(port, () => {
     console.log('listening!!')

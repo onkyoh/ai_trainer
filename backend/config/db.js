@@ -4,7 +4,7 @@ mongoose.set({strictQuery: false})
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.DATABASE_URL)
+        await mongoose.connect(process.env.DATABASE_URL || process.env.MONGO_URI)
     } catch (e) {
         process.exit(1)
     }
