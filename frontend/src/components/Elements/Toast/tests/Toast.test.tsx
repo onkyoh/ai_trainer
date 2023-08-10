@@ -1,35 +1,28 @@
 import Toast from "../Toast";
-import { render, screen } from '@testing-library/react'
-import useToast from "../useToast";
+import useToastStore from "../../../../stores/useToastStore";
+import { render, screen } from "@testing-library/react";
 import { useEffect } from "react";
 
-test('renders toast', () => {
+test("renders toast", () => {
+  const toastProps = {
+    message: "message",
+    success: true,
+  };
 
-    const toastProps = {
-        message: 'message',
-        success: true
-    }
-    
-    const Component = () => {
+  const Component = () => {
+    const { toast, notify } = useToastStore();
 
-        const {toast, notify} = useToast()
+    useEffect(() => {
+      notify(toastProps);
+    }, []);
 
-        useEffect(() => {
-            notify(toastProps)
-        }, [])
+    return <div>{toast && <Toast {...toastProps} />}</div>;
+  };
 
-        return (
-            <div>
-                {toast && <Toast {...toastProps}/>}
-            </div>
-        )
-    }
+  render(<Component />);
 
-    render(<Component/>)
+  const toastAlert = screen.getByLabelText("alert");
 
-    const toastAlert = screen.getByLabelText('alert')
-
-    expect(toastAlert).toHaveTextContent('✓')
-    expect(toastAlert).toHaveTextContent('message')
-
-})
+  expect(toastAlert).toHaveTextContent("✓");
+  expect(toastAlert).toHaveTextContent("message");
+});

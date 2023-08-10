@@ -1,14 +1,5 @@
-import axios from "axios"
-import { authorize } from "../../../utils/authorize"
-import { PLAN_URL } from "../../../utils/constants"
-import { errorHandler } from "../../../utils/error"
+import { axios } from "../../../lib/axios";
 
-export const deletePlan = async (planId: string) => {
-
-    try {
-        const res = await axios.delete(`${PLAN_URL}/${planId}`, authorize())
-        return res.data
-    } catch (err) {
-        errorHandler(err)
-    }
-}
+export const deletePlan = (planId: string) => {
+  return axios.delete(`/plans/${planId}`);
+};
