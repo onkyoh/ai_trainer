@@ -1,20 +1,11 @@
-import axios from 'axios'
-import { authorize } from '../../../utils/authorize'
-import { PLAN_URL } from '../../../utils/constants'
-import { errorHandler } from '../../../utils/error'
+import { axios } from "../../../lib/axios";
 
-export const addPoint = async (
-    planId: string,
-    data: {
-        value: string,
-        date: string
-    }
+export const addPoint = (
+  planId: string,
+  data: {
+    value: string;
+    date: string;
+  }
 ) => {
-
-    try {
-        const res = await axios.put(`${PLAN_URL}/${planId}`, data, authorize())
-        return res.data
-    } catch (err: any) {
-        return errorHandler(err)
-    }
-}
+  return axios.put(`/plans/${planId}`, data);
+};

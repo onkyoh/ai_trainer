@@ -1,28 +1,21 @@
+import { COLORS } from "../../../utils/constants";
+
 interface IProps {
-    success: Boolean,
-    message: string,
-    red?: string,
-    green?: string,
+  success: Boolean;
+  message: string;
 }
 
-const Toast = ({
-    success, 
-    message,
-    red = '#E92127',
-    green = '#4D9456',
-}: IProps) => {
-
-
+const Toast = ({ success, message }: IProps) => {
   const toastIcon = {
-    backgroundColor: success ? green : red,
-  }
+    backgroundColor: success ? COLORS.MINT : COLORS.YELLOW,
+  };
 
   return (
     <div className="toast" aria-label="alert">
-      <span style={toastIcon}>{success ? '✓' : '!'}</span>
+      <span style={toastIcon}>{success ? "✓" : "!"}</span>
       <span>{message}</span>
     </div>
-  )
-}
+  );
+};
 
-export default Toast
+export default Toast;
